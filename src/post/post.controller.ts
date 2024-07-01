@@ -12,8 +12,8 @@ export class PostController {
     }
 
     @Get()
-    getAll(@GetUser('id') userId: string) {
-        return this.postService.getAll()
+    getAllByUser(@GetUser('id') userId: string) {
+        return this.postService.getAll(userId)
     }
 
     @Get(':id')
@@ -22,14 +22,16 @@ export class PostController {
     }
 
     @Post()
-    create(
+    async create(
         @GetUser('id') userId: string,
         @Body() data: PostDto) {
+         return this.postService.create(userId, data);
     }
 
     @Put(':id')
     update(
         @Param('id') id: string,
         @Body() data: UpdatePostDto) {
+        return this.postService.update(id, data);
     }
 }

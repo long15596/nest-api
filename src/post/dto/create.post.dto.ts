@@ -5,7 +5,6 @@ export class PostDto {
     @IsNotEmpty()
     title: string
     @IsString()
-    content: string
     @IsNotEmpty()
-    userId: string
+    content: string
 }
